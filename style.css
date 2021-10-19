@@ -49,6 +49,7 @@ button{
     cursor:pointer;
     background-color:rgb(191, 255, 161);
     color:#242424;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .button-div > button:hover{
