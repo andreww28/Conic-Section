@@ -147,7 +147,7 @@ function show_graph(){
 }
 
 function hide_graph(){
-    graph_div.style.transform = "translate(-50%, -300%)";
+    graph_div.style.transform = "translate(-50%, -400%)";
     main_container.style.filter = "blur(0px)";
 }
 

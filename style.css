@@ -5,6 +5,7 @@
 }
 
 body{
+    padding:1em;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.125rem;
     background: url('./parabola_bg.jpg') no-repeat center;
@@ -56,32 +57,42 @@ button{
 
 .title{
     font-family: 'Source Code Pro', monospace;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    text-align: center;
 }
 
 .value{
     font-size:1.3rem;
 }
 
-
-.output, .input-div{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:1em;
+.output-div, .input-div{
+    padding:1em 0;
 }
 
 
 .input-div{
     margin: 6em 0;
     flex-direction:column;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:1em;
 }
 
 .output-div{
-    width:100%;
+    margin:auto;
+    width:80%;
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap:2em;
+    grid-gap:1em;
+}
+
+.output{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-gap:0.3em;
+    align-items:center;
+    justify-items: center;
 }
 
 .endpoints-div{
@@ -101,7 +112,7 @@ button{
     top:50%;
     left:50%;
     transition: ease 0.5s;
-    transform:translate(-50%, -300%);
+    transform:translate(-50%, -400%);
     background-color:rgb(46, 46, 46);
 }
 
@@ -119,3 +130,63 @@ button{
     background-color:rgb(126, 6, 6);
 }
 
+#calculator{
+    width:600px;
+    height:400px;
+}
+
+@media (max-width:1230px){
+    .output-div{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .title{
+        font-size:1.25rem;
+    }
+
+    .value{
+        font-size: 1.125rem;
+    }
+
+    #equation{
+        font-size:1.3rem;
+    }
+}
+
+@media (max-width: 900px){
+    .output-div{
+        display:flex;
+        flex-direction:column;
+    }
+
+    h1{
+        font-size:2.5rem;
+    }
+
+    #calculator{
+        width:500px;
+        height:300px;
+    }
+}
+
+@media (max-width:614px){
+    .output{
+        font-size:1.125rem;
+    }
+
+    #equation{
+        width: 16em;
+        font-size:1.2rem;
+    }
+
+    button{
+        font-family: inherit;
+        font-size:1.15rem;
+        width:8em;
+    }
+
+    #calculator{
+        width:350px;
+        height:500px;
+    }
+}
