@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,500&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Conic Sections</title>
+    <script src="https://www.desmos.com/api/v1.6/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.1/math.js" integrity="sha512-AfRcJIj922x/jSJpQLnry0DYIBg6EGCtwk/MiQ6QvDlzb7kNFxH8EdqXLkaXXY3YHQS9FrSb8H7LzuLn0CZQ1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+    <h1>Conic Section - <span class="shape-title">Parabola</span></h1>
+    <div class="main-container">
+        <div class="input-div">
+            <p id="format">Valid Format: Ex: <span id="eq">(x-0)^2 = 4(y-0)</span></p>
+            <input id="equation" placeholder="Standard Form Equation"></input>
+            <div class="button-div">
+                <button id='clear'>Clear</button>
+                <button id='graph-btn'>Show Graph</button>
+            </div>
+        </div>
+    
+        <div class="output-div">
+            <div class="direction-div output">
+                <p class="title">Direction:</p>
+                <p class="value">???</p>
+            </div>
+    
+            <div class="vertex-div output">
+                <p class="title">Vertex:</p>
+                <p class="value">???</p>
+            </div>
+    
+            <div class="focus-div output">
+                <p class="title">Focus:</p>
+                <p class="value">???</p>
+            </div>
+    
+            <div class="directrix-div output">
+                <p class="title">Directrix:</p>
+                <p class="value">???</p>
+            </div>
+    
+            <div class="aos-div output">
+                <p class="title">Axis of Symmetry:</p>
+                <p class="value">???</p>
+            </div>
+    
+            <div class="lr-div output">
+                <p class="title">Length of Latus Rectum:</p>
+                <p class="value">???</p>
+            </div>
+    
+            <div class="endpoints-div output">
+                <p class="title">Endpoints of LR:</p>
+                <p class="value">???</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="graph-div">
+        <div id="calculator" style="width: 600px; height: 400px;"></div>
+        <button id='graph-cancel'>Cancel</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
