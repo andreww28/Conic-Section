@@ -11,6 +11,7 @@ body{
     background: url('./parabola_bg.jpg') no-repeat center;
     background-size: cover;
     color:#ffffff;
+    -webkit-tap-highlight-color: transparent;
 }
 
 h1{
@@ -20,7 +21,7 @@ h1{
     font-size:3rem;
 }
 
-.shape-title, .value, #eq{
+.shape-title, h3, .value, #eq{
     color:rgb(191, 255, 161);
 }
  
@@ -47,9 +48,8 @@ button{
     outline:none;
     border-radius: 7px;
     cursor:pointer;
-    background-color:rgb(191, 255, 161);
+    background-color:rgb(122, 175, 97);
     color:#242424;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .button-div > button:hover{
@@ -72,7 +72,7 @@ button{
 
 
 .input-div{
-    margin: 6em 0;
+    margin: 4em 0 2em 0;
     flex-direction:column;
     display:flex;
     justify-content:center;
@@ -82,13 +82,14 @@ button{
 
 .output-div{
     margin:auto;
+    margin-bottom: 2em;
     width:80%;
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap:1em;
 }
 
-.output{
+.output, .rl-input-container, .rl-output{
     display:grid;
     grid-template-columns:1fr 1fr;
     grid-gap:0.3em;
@@ -135,6 +136,56 @@ button{
     width:600px;
     height:400px;
 }
+
+
+.rl-div{
+    margin:1em 0;
+}
+
+h3, #note{
+    text-align: center;
+}
+
+h3{
+    font-size:1.5rem;
+}
+
+#note{
+    font-size:1rem;
+    margin-bottom:1em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.rl-input{
+    padding:0.2em 0.4em;
+    width:5em;
+    background:none;
+    outline:none;
+    border:none;
+    border-bottom:2px solid rgb(122, 175, 97);
+    -moz-appearance: textfield;
+    color:antiquewhite;
+    font-size:1.2rem;
+    text-align:center;
+}
+
+.rl-output{
+    width:80%;
+}
+
+.rl-btn-div{
+    margin-top:1em;
+    grid-area: 3/1/4/3;
+}
+
+
+
+
 
 @media (max-width:1230px){
     .output-div{
@@ -189,5 +240,11 @@ button{
     #calculator{
         width:350px;
         height:500px;
+    }
+
+    .rl-input-container{
+        display:flex;
+        flex-direction:column;
+        gap:0.7em;
     }
 }
