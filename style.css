@@ -21,7 +21,7 @@ h1{
     font-size:3rem;
 }
 
-.shape-title, h3, .value, #eq{
+.shape-title, h3, .value, .eq{
     color:rgb(191, 255, 161);
 }
  
@@ -56,14 +56,30 @@ button{
     background-color:rgb(111, 180, 80);
 }
 
+.eq{
+    font-size:0.9rem;
+}
+
+.title, .value, #format{
+    text-align: center;
+}
+
 .title{
     font-family: 'Source Code Pro', monospace;
     font-size: 1.3rem;
-    text-align: center;
 }
 
 .value{
     font-size:1.3rem;
+}
+
+.ex{
+    margin:0.5em 0;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    justify-items:center;
+    align-items:center;
+    grid-gap:2em;
 }
 
 .output-div, .input-div{
@@ -96,6 +112,7 @@ button{
     align-items:center;
     justify-items: center;
 }
+
 
 .endpoints-div{
     grid-area: 3/2/4/3;
@@ -222,6 +239,15 @@ input::-webkit-inner-spin-button {
 }
 
 @media (max-width:614px){
+    .ex{
+        grid-template-columns: 1fr 1fr;
+        grid-gap:0.2em;
+    }
+
+    .eq3{
+        grid-area: 2/1/3/3;
+    }
+
     .output{
         font-size:1.125rem;
     }
