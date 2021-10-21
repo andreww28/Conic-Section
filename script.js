@@ -109,7 +109,6 @@ const Main = function(){
     var calculator;
 
     function convert_num(num){
-        return num
         let obj = math.fraction(num);
         let n = obj.n;
         let d = obj.d;
@@ -201,6 +200,8 @@ const real_life_prob = function (){
     let left_side;
     let result;
     let x = parseFloat(wide.value) / 2
+
+    const main_parabola = Main();
 
     function setP(){
         right_side = 4 * eval(deep.value);
