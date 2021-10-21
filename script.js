@@ -113,8 +113,10 @@ const Main = function(){
             let obj = math.fraction(num);
             let n = obj.n;
             let d = obj.d;
+            console.log(num, n,d);
         
             if(d != 1){ 
+                if(num.toString().match('\-')) return `-${n}/${d}`
                 return `${n}/${d}`
             }
 
