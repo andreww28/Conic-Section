@@ -65,7 +65,6 @@ const Parabola_parts = function (){
             lr = 4 * c
             elr = `[(${main_parabola.convert_num(h + 2*c)}, ${main_parabola.convert_num(k + c)}), (${main_parabola.convert_num(h- 2*c)}, ${main_parabola.convert_num(k + c)})]`
         }else if(opening == "Downward"){
-            console.log(c);
             focus = `(${main_parabola.convert_num(h)}, ${main_parabola.convert_num(k - c)})`
             directrix = `y = ${main_parabola.convert_num(k + c)}`
             aos = `x = ${main_parabola.convert_num(h)}`
@@ -102,6 +101,7 @@ const Main = function(){
     const label = Array.from(document.querySelectorAll('.value'));
     const clear_btn = document.querySelector('#clear');
     const show_graph_btn = document.querySelector('#graph-btn');
+    const toDecimal_btn = document.querySelector('#to-decimal');
     const main_container = document.querySelector('.main-container');
     const valid_eq_re = /\([xy][\+\-]\d+(\/\d+)?(\.?\d+){0,1}\)\^2(\s?)+=(\s?)+\-?(\d?(\/\d+)?(\.{0,1}\d+){0,1})+(\s?)+\([xy][\+\-]\d+(\/\d+)?(\.?\d+){0,1}\)/
     
@@ -109,12 +109,19 @@ const Main = function(){
     var calculator;
 
     function convert_num(num){
-        let obj = math.fraction(num);
-        let n = obj.n;
-        let d = obj.d;
-    
-        if(d != 1){
-            return `${n}/${d}`
+        if(toDecimal_btn.textContent === 'To Decimal'){
+            let obj = math.fraction(num);
+            let n = obj.n;
+            let d = obj.d;
+        
+            if(d != 1){ 
+                return `${n}/${d}`
+            }
+
+        }else if(toDecimal_btn.textContent === 'To Fraction'){
+            if(num.toString().match('\.')){
+                return Math.round(num * 100) / 100;
+            }
         }
         return num
     }
@@ -171,11 +178,23 @@ const Main = function(){
         main_container.style.filter = "blur(0px)";
     }
 
+    function output_change_format(e){
+        let rl_parabola = real_life_prob();
+        if(e.target.textContent === 'To Decimal'){
+            e.target.textContent = 'To Fraction'   
+        }else{
+            e.target.textContent = 'To Decimal'
+        }
+        set_value();
+        rl_parabola.check_inputs();
+    }
+
 
     function addEvent(){
         clear_btn.addEventListener('click', clear);
         equation.addEventListener('keyup', validate_eq);
         show_graph_btn.addEventListener('click', show_graph);
+        toDecimal_btn.addEventListener('click', output_change_format.bind(event));
         cancel_graph_btn.addEventListener('click', hide_graph);
     }
 
@@ -199,7 +218,7 @@ const real_life_prob = function (){
     let right_side;
     let left_side;
     let result;
-    let x = parseFloat(wide.value) / 2
+    let x = parseFloat(wide.value) / 2;
 
     const main_parabola = Main();
 
@@ -234,18 +253,20 @@ const real_life_prob = function (){
             input.disabled = true;
             if(input.value ==- '') input.style.color = 'rgb(151, 233, 113)';
         });
+
+        let rl_prabola = real_life_prob();
     
         if(p.value === '' && (wide.value != '' && deep.value != '')){
-            setP();
-            setFocus();
+            rl_prabola.setP();
+            rl_prabola.setFocus();
         }else if(wide.value === '' && (deep.value != '' && p.value != '')){
-            setWide();
-            setFocus();
+            rl_prabola.setWide();
+            rl_prabola.setFocus();
         }else if(deep.value === '' && (wide.value != '' && p.value != '')){
-            setDeep();
-            setFocus();
+            rl_prabola.setDeep();
+            rl_prabola.setFocus();
         }else if(p.value != '' && focus.value ===''){
-            setFocus();
+            rl_prabola.setFocus();
         }
     }
 

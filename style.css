@@ -52,6 +52,7 @@ button{
     color:#242424;
 }
 
+
 .button-div > button:hover{
     background-color:rgb(111, 180, 80);
 }
@@ -120,7 +121,7 @@ button{
 
 .button-div{
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 2em;
 }
 
@@ -246,6 +247,16 @@ input::-webkit-inner-spin-button {
 
     .eq3{
         grid-area: 2/1/3/3;
+    }
+
+    .button-div{
+        grid-template-columns: 1fr 1fr;
+        justify-items:center;
+        gap:0.5em 1em;
+    }
+
+    #to-decimal{
+        grid-area: 2/1/3/-1;
     }
 
     .output{
