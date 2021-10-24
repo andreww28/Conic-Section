@@ -1,0 +1,88 @@
+
+main{
+    height:80vh;
+    padding:0 1em;
+    background: linear-gradient(0deg, rgba(243, 243, 243, 0.747), rgba(248, 248, 248, 0.699)) ,url('../assets/home_bg.jpg') no-repeat left;
+    background-size: cover;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    gap:4em;
+}
+
+h1, h2, h4{
+    line-height: 1;
+    font-family: 'Lato', sans-serif;
+    text-align:center;
+}
+
+h1{
+    font-weight: 1400;
+    font-size:3rem;
+}
+
+h1, #desc{
+    color:var(--dark-font);
+}
+
+#desc{
+    text-align: center;
+}
+
+
+.types-container h2{
+    padding:0.5em;
+    background-color:var(--dark-bg);
+    color: var(--light-font);
+}
+
+.types{
+    margin:1em;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    gap:3em;
+}
+
+.shape{
+    padding:0.5em;
+    width:13em;
+    height:13em;
+    font-size:1.4rem;
+    color: var(--light-font);
+    background-color:var(--dark-bg);
+    cursor: pointer;
+
+    display:flex;
+    flex-direction:column;
+    gap:1em;
+}
+
+.shape img{
+    width:12em;
+    height:12em;
+    object-fit: fill;
+}
+
+
+@media (min-width:800px){
+    h1{
+        font-size: 4rem;
+    }
+
+    #desc{
+        width: 72ch;
+    }
+
+    .types{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:1.5em;
+        align-items:center;
+        justify-items: center;
+    }
+}
+

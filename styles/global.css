@@ -1,0 +1,131 @@
+:root{
+  --dark-bg : rgb(36, 36, 36);
+  --light-font : rgb(215, 233, 233);
+  --dark-font: rgb(67, 69, 71);
+}
+
+*,*::before, *::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+img{
+    margin:0;
+    padding:0;
+    display:block;
+}
+
+body{
+    font-family: 'Roboto Slab', serif;
+}
+
+
+header {
+    overflow: hidden;
+    background-color: var(--dark-bg);
+    position: fixed;
+    width:100%;
+}
+  
+  /* Hide the links inside the navigation menu (except for logo/home) */
+  header #myLinks {
+    flex-direction: column;
+    background-color:#333;
+    display: none;
+  }
+  
+  /* Style navigation menu links */
+  header a {
+    color: var(--light-font);
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  
+  /* Style the hamburger menu */
+  header a.icon {
+    background: rgb(36, 36, 36);
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  /* Add a grey background color on mouse-over */
+  header a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Style the active link (or home/logo) */
+  .active {
+    background-color:var(--dark-bg);
+    color: var(--light-font);
+  }
+
+
+
+  /*Footer*/
+
+footer, footer ul{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  gap: 1em;
+}
+
+footer{
+    margin-top:2em;
+    padding:4em 1em;
+    flex-direction:column;
+    background-color:var(--dark-bg);
+    color:var(--light-font);
+}
+
+footer h4{
+    font-size:2.3rem;
+}
+
+
+footer li {
+  list-style-type:none;
+  font-size:28px;
+  color:rgba(167, 146, 129);
+  cursor: pointer;
+}
+
+footer li:hover{
+  color: rgb(128, 113, 102);
+}
+
+
+
+@media (min-width:800px){
+
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0.3em 2em;
+  }
+
+  header .active{
+    width:auto;
+    background-color: inherit;
+  }
+
+  header a.icon{
+    display:none;
+  }
+
+  header #myLinks {
+    display: flex;
+    flex-direction:row;
+    background-color:transparent;
+  }
+}
+
+
+  
