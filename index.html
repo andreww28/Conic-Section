@@ -12,43 +12,99 @@
 </head>
 <body>
     <header>
-        <a href="#home" class="active navlink">Logo</a>
+        <a href="index.html" class="active navlink">John Andrew</a>
         <!-- Navigation links (hidden by default) -->
         <div id="myLinks">
-          <a href="#home" class="navlink">Home</a>
+          <a href="index.html" class="navlink">Home</a>
           <a href="#about" class="navlink">About</a>
           <a href="#learn" class="navlink">Learn</a>
         </div>
         <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <a href="javascript:void(0);" class="icon">
           <i class="fa fa-bars"></i>
         </a>
     </header>
 
     <main>
         <h1>Conic Sections - Solver</h1>
-        <p id="desc">Hello! Welcome to my website. It is a friendly website which can help you to solve a problem regarding to the different types of Conic Sections.</p>
+        <p id="desc">Hello!, Welcome to my website. It is a friendly website which can help you to find or solve a parts of certain shape in Conic Sections.</p>
     </main>
 
+    <div class="calc">
+        <h2>Calculate:</h2>
+        <div class="choose-type-div">
+            <label for="shapes">Choose Shapes: </label>
+            <select id="shape-selection">
+                <option value="parabola">Parabola</option>
+                <option value="circle">Circle</option>
+                <option value="ellipse">Ellipse</option>
+                <option value="hyperbola">Hyperbola</option>
+            </select>
+        </div>
+        <div class="input-div">
+            <input type="text" id="input-eq" placeholder="Type/Paste Equation">
+            <div class="button-div">
+                <button id="reset">Reset</button>
+                <button id="show-graph">Show Graph</button>
+                <button id="convert">To Decimal</button>
+            </div>
+        </div>
+        <div class="output-div">
+            <p id="legend">Parts:</p>
+            <div class="parts">
+                <p class="title">Diretions:</p>
+                <p class="value">undefined</p>
+            </div>
+            <div class="parts">
+                <p class="title">Focal length(p):</p>
+                <p class="value">undefined</p>
+            </div>
+            <div class="parts">
+                <p class="title">Vertex:</p>
+                <p class="value">undefined</p>
+            </div>
+            <div class="parts">
+                <p class="title">Focus:</p>
+                <p class="value">undefined</p>
+            </div>
+            <div class="parts">
+                <p class="title">Directrix:</p>
+                <p class="value">undefined</p>
+            </div>
+            <div class="parts">
+                <p class="title">Axis of Symmetry:</p>
+                <p class="value">undefined</p>
+            </div>
+            <div class="parts">
+                <p class="title">Length of Latus Rectum:</p>
+                <p class="value">undefined</p>
+            </div>
+            <div class="parts">
+                <p class="title">Endpoints of Latus Rectum:</p>
+                <p class="value">undefined</p>
+            </div>
+        </div>
+    </div>
+
     <div class="types-container">
-        <h2>Types:</h2>
+        <h2 id="learn">Learn:</h2>
         <div class="types">
-            <div class="circle shape" onclick="location.href = 'pages\\circle.html'">
+            <div class="circle shape" onclick="location.href = 'pages\\learn-page.html'">
                 <h4 class=shape-title>Circle</h4>
                 <img src="./assets/circle.png" alt="">
             </div>
     
-            <div class="parabola shape" onclick="location.href = 'pages\\parabola.html'">
+            <div class="parabola shape" onclick="location.href = 'pages\\learn-page.html'">
                 <h4 class=shape-title>Parabola</h4>
                 <img src="./assets/parabola.png" alt="">
             </div>
     
-            <div class="ellipse shape" onclick="location.href = 'pages\\ellipse.html'">
+            <div class="ellipse shape" onclick="location.href = 'pages\\learn-page.html'">
                 <h4 class=shape-title>Ellipse</h4>
                 <img src="./assets/ellipse.jpeg" alt="">
             </div>
     
-            <div class="hyperbola shape" onclick="location.href = 'pages\\hyperbola.html'">
+            <div class="hyperbola shape" onclick="location.href = 'pages\\learn-page.html'">
                 <h4 class=shape-title>Hyperbola</h4>
                 <img src="./assets/hyperbola.jpg" alt="">
             </div>
@@ -66,6 +122,7 @@
         </ul>
     </footer>
 
+    <script src="./scripts/parabola.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
 </html>
