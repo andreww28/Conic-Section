@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,400&family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.1/math.js" integrity="sha512-AfRcJIj922x/jSJpQLnry0DYIBg6EGCtwk/MiQ6QvDlzb7kNFxH8EdqXLkaXXY3YHQS9FrSb8H7LzuLn0CZQ1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://www.desmos.com/api/v1.6/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/global.css">
     <title>Conic Sections</title>
@@ -86,25 +88,30 @@
         </div>
     </div>
 
+    <div class="graph-div">
+        <div id="calculator"></div>
+        <button id='graph-cancel'>Cancel</button>
+    </div>
+
     <div class="types-container">
         <h2 id="learn">Learn:</h2>
         <div class="types">
-            <div class="circle shape" onclick="location.href = 'pages\\learn-page.html'">
+            <div class="circle shape" onclick="location.href = 'pages\\learn-page.html#circle'">
                 <h4 class=shape-title>Circle</h4>
                 <img src="./assets/circle.png" alt="">
             </div>
     
-            <div class="parabola shape" onclick="location.href = 'pages\\learn-page.html'">
+            <div class="parabola shape" onclick="location.href = 'pages\\learn-page.html#parabola'">
                 <h4 class=shape-title>Parabola</h4>
                 <img src="./assets/parabola.png" alt="">
             </div>
     
-            <div class="ellipse shape" onclick="location.href = 'pages\\learn-page.html'">
+            <div class="ellipse shape" onclick="location.href = 'pages\\learn-page.html#ellipse'">
                 <h4 class=shape-title>Ellipse</h4>
                 <img src="./assets/ellipse.jpeg" alt="">
             </div>
     
-            <div class="hyperbola shape" onclick="location.href = 'pages\\learn-page.html'">
+            <div class="hyperbola shape" onclick="location.href = 'pages\\learn-page.html#hyperbola'">
                 <h4 class=shape-title>Hyperbola</h4>
                 <img src="./assets/hyperbola.jpg" alt="">
             </div>

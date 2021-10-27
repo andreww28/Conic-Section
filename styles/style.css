@@ -169,14 +169,46 @@ button:hover{
 }
 
 .title{
-    font-size:1.25rem;
+    font-size:1.12rem;
     font-weight: 500;
 }
 
 .value{
+    font-size: 1rem;
     justify-self: center;
     text-align:center;
 }
+
+
+.graph-div{
+    padding:0.5em;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transition: ease 0.5s;
+    transform:translate(-50%, -400%);
+    background-color:rgb(46, 46, 46);
+}
+
+#graph-cancel{
+    background-color:red;
+    color:white;
+    padding:0.5em 1em;
+    margin:1em auto;
+    position:absolute;
+    right: 50%;
+    transform:translateX(50%);
+}
+
+#graph-cancel:hover{
+    background-color:rgb(126, 6, 6);
+}
+
+#calculator{
+    width:275px;
+    height:400px;
+}
+
 
 @media (min-width:800px){
     h1{
