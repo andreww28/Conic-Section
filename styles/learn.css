@@ -1,13 +1,34 @@
 
 main{
-    margin-top:5em;
+    margin-top:3.5em;
 }
 
+
 .link-extension{
-    margin-top: -1.5em;
-    padding: 1em;
+    padding: 1em 0.2em;
     background-color:rgb(63, 63, 63);
     color:var(--light-font);
+    position:fixed;
+    width:90%;
+    height:100vh;
+    top: 63px;
+    left: 0;
+    transform: translateX(-100%);
+    transition: all 1s ease;
+}
+
+#show-res-icon{
+    padding: 1em 0.5em;
+    font-size: 1.3rem;
+    width: 2em;
+    border-radius: 20%;
+    background-color:rgb(63, 63, 63);
+    display:flex;
+    justify-content:flex-end;
+    position:fixed;
+    top:30%;
+    right:-25px;
+    cursor:pointer;
 }
 
 .link-extension h2{
@@ -18,10 +39,7 @@ main{
     margin:1em;
     display:flex;
     flex-direction:column;
-    gap:0.5em;
-    justify-content:center;
-    align-items: center;
-    text-align: center;
+    gap: 1em;
 }
 
 .learn-links a{
@@ -33,13 +51,13 @@ main{
     color:rgb(175, 175, 175);
 }
 
+.shape-section{
+    margin-bottom: 2em;
+}
 
 .shape-section h3{
     padding:0.5em;
-    font-size: 1.6rem;
-    text-align:center;
-    color: var(--light-font);
-    background-color:var(--dark-bg);
+    font-size: 2rem;
 }
 
 .shape-section h4{
@@ -57,10 +75,19 @@ main{
     overflow: auto;
 }
 
+.site-content li{
+    margin-top: 1em;
+    list-style-type:circle;
+}
+
 .site-content a{
     font-size: 1.125rem;
     text-decoration:none;
     color: rgb(87, 87, 87);
+}
+
+.site-content a:hover{
+    color:rgb(175, 175, 175);
 }
 
 .video-content{
@@ -85,17 +112,16 @@ main{
     main{
         margin-top: 3.5em;
     }
+
     .link-extension{
-        position:fixed;
-        height:100vh;
         width:15em;
-        top: 90px;
-        left: 0;
+        transform: translateX(0);
     }
 
-    .learn-links{
-        gap: 1em;
+    #show-res-icon{
+        display:none;
     }
+
     .sections, footer{
         margin-left: 15em;
     }

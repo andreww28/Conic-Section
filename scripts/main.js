@@ -11,12 +11,12 @@ const Main = function (){
       }
   } 
 
-  // function check_window_size(){
-  //   if(window.innerWidth < 800){
-  //     const navLink = Array.from(document.querySelectorAll('.navlink'));
-  //     navLink.map(link => link.addEventListener('click', () => x.style.display = "none"));
-  //   }
-  // }
+  function check_window_size(){
+    if(window.innerWidth < 800){
+      const navLink = Array.from(document.querySelectorAll('.navlink'));
+      navLink.map(link => link.addEventListener('click', () => x.style.display = "none"));
+    }
+  }
 
   function addEvent(){
     ham_icon.addEventListener('click', show_nav);
@@ -24,7 +24,7 @@ const Main = function (){
 
   return {
     addEvent,
-    //check_window_size,
+    check_window_size,
   }
 }
 
@@ -208,7 +208,7 @@ const Shape_part = function(){
   const shape_part = Shape_part();
 
   window.addEventListener('load', () => {
-    //main.check_window_size();
+    main.check_window_size();
     main.addEvent();
     shape_part.addEvent();
     shape_part.check_shape(shape_selection.value);
