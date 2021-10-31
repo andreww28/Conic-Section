@@ -1,6 +1,6 @@
 :root{
-  --dark-bg : rgb(72, 72, 72);
-  --light-font : rgb(215, 233, 233);
+  --dark-bg : rgb(66, 156, 135);
+  --light-font : rgb(253, 253, 253);
   --dark-font: rgb(67, 69, 71);
 }
 
@@ -20,7 +20,18 @@ body{
     font-family: 'Roboto Slab', serif;
     font-size: 1.125rem;
     color: var(--dark-font);
+    background-image: linear-gradient(to right, rgb(202, 255, 255) , white, rgb(202, 255, 255));
     -webkit-tap-highlight-color: transparent;
+}
+
+button{
+  border:none;
+  outline: none;
+}
+
+.highlight{
+  color:rgb(100, 163, 149);
+  font-weight: 700;
 }
 
 
@@ -32,7 +43,7 @@ h1, h2, h4{
 
 
 header {
-    background-color: rgb(36, 36, 36);
+    background-color: rgb(100, 163, 149);
     width:100%;
     height:3.5em;
     z-index: 2;
@@ -44,7 +55,7 @@ header {
   /* Hide the links inside the navigation menu (except for logo/home) */
   header #myLinks {
     flex-direction: column;
-    background-color:#333;
+    background-color:rgb(125, 202, 185);
     display: none;
   }
   
@@ -59,7 +70,7 @@ header {
   
   /* Style the hamburger menu */
   header a.icon {
-    background: rgb(36, 36, 36);
+    background: rgb(100, 163, 149);
     display: block;
     position: absolute;
     right: 0;
@@ -68,13 +79,13 @@ header {
   
   /* Add a grey background color on mouse-over */
   header a:hover {
-    background-color: rgb(58, 58, 58);
+    background-color: rgb(81, 160, 143);
     color: rgb(184, 184, 184);
   }
   
   /* Style the active link (or home/logo) */
   .active {
-    background-color:rgb(36, 36, 36);
+    background-color:rgb(100, 163, 149);
     color: var(--light-font);
   }
 
@@ -93,7 +104,7 @@ footer{
     margin-top:2em;
     padding:4em 1em;
     flex-direction:column;
-    background-color:rgb(36, 36, 36);
+    background-color:rgb(100, 163, 149);
     color:var(--light-font);
 }
 
@@ -105,7 +116,7 @@ footer h4{
 footer li {
   list-style-type:none;
   font-size:28px;
-  color:rgba(167, 146, 129);
+  color:rgb(221, 255, 248);
   cursor: pointer;
 }
 

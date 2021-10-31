@@ -1,7 +1,6 @@
 class Parabola{
     constructor(equation){
-        this.equation = equation;
-        this.valid_eq_re = /^\([xy][\+\-]\d+(\/\d+)?(\.?\d+){0,1}\)\^2(\s?)+=(\s?)+\-?(\d?(\/\d+)?(\.{0,1}\d+){0,1})+(\s?)+\([xy][\+\-]\d+(\/\d+)?(\.?\d+){0,1}\)$/;
+        this.equation = equation.replace(/ /g, '').replace(/²/g, '^2');
         this.opening = null;
         this.h = null;
         this.k = null;
@@ -9,7 +8,20 @@ class Parabola{
     }
 
     validate(){
-        return this.equation.match(this.valid_eq_re);
+        this.equation = this.equation.replace(/x\^2/, '(x-0)^2').replace(/y\^2/, '(y-0)^2').replace(/y$/, '(y-0)').replace(/x$/, '(x-0)');
+
+        const valid_format = {
+            case1 : /^\(x[\+\-]\d+(\/\d+)?(\.?\d+){0,1}\)\^2\=\-?(\d?(\/\d+)?(\.{0,1}\d+){0,1})+\(y[\+\-]\d+(\/\d+)?(\.?\d+){0,1}\)$/,
+            case2 : /^\(y[\+\-]\d+(\/\d+)?(\.?\d+){0,1}\)\^2\=\-?(\d?(\/\d+)?(\.{0,1}\d+){0,1})+\(x[\+\-]\d+(\/\d+)?(\.?\d+){0,1}\)$/,
+        }
+        
+        for(const [key,value] of Object.entries(valid_format)){
+            let result = this.equation.match(value);
+            if(result){
+                return true;
+            }
+        }
+        return false;
     }
 
     assign_values(){
@@ -21,10 +33,10 @@ class Parabola{
 
     getOpening(){
         const directions = {
-            Upward:  /\=(\s?)+(\d?)+(\/\d+)?(\.\d+)?\(y/,
-            Downward: /\=(\s?)+\-(\d?)+(\/\d+)?(\.\d+)?\(y/,
-            "To the right": /\=(\s?)+(\d?)+(\/\d+)?(\.\d+)?\(x/,
-            "To the left": /\=(\s?)+\-(\d?)+(\/\d+)?(\.\d+)?\(x/
+            Upward:  /\=(\d?)+(\/\d+)?(\.\d+)?\(y/,
+            Downward: /\=\-(\d?)+(\/\d+)?(\.\d+)?\(y/,
+            "To the right": /\=(\d?)+(\/\d+)?(\.\d+)?\(x/,
+            "To the left": /\=\-(\d?)+(\/\d+)?(\.\d+)?\(x/
         };
 
         for(const [key,value] of Object.entries(directions)){
@@ -37,22 +49,23 @@ class Parabola{
 
     getFocalLength(){
         const cases = {
-            wholeNumber : /\=(\s?)+\-?\d+(\s?)+\(/,
-            noNumber : /\=(\s?)+\-?(\s?)+\(/,
-            fraction: /\=(\s?)+\-?\d+(.\d+)?\/\d+(.\d+)?(\s?)+\(/,
-            decimal : /\=(\s?)+\-?\d+\.\d+(\s?)+\(/,
+            wholeNumber : /\=\-?\d+\(/,
+            noNumber : /\=\-?\(/,
+            fraction: /\=\-?\d+(.\d+)?\/\d+(.\d+)?\(/,
+            decimal : /\=\-?\d+\.\d+\(/,
         }
 
         let c ;
         if(this.equation.match(cases.noNumber)){
             return 1/4;
         }else if(this.equation.match(cases.wholeNumber)){
-            c = this.equation.match(cases.wholeNumber)[0].split(' ')[1].slice(0,-1);
+            c = this.equation.match(cases.wholeNumber)[0].split('(')[0].substring(1);
+            console.log(this.equation.match(cases.wholeNumber)[0].split('('));
         }else if(this.equation.match(cases.fraction)){
-            c = this.equation.match(cases.fraction)[0].split(' ')[1].slice(0,-1)
+            c = this.equation.match(cases.fraction)[0].split('(')[0].substring(1);
             c = eval(c);
         }else if(this.equation.match(cases.decimal)){
-            c = this.equation.match(cases.decimal)[0].split(' ')[1].slice(0,-1)
+            c = this.equation.match(cases.decimal)[0].split('(')[0].substring(1);
         }
         return Math.abs(parseFloat(c/4));
     }

@@ -30,40 +30,49 @@ const Main = function (){
 
 
 const Shape_part = function(){
+  const show_graph_btn = document.querySelector('#show-graph');
   const shape_selection = document.querySelector('#shape-selection');
-  const shape_options = Array.from(document.querySelectorAll('#shape-selection > option'));
   const equation_input = document.querySelector('#input-eq');
   const output_div = document.querySelector('.output-div');
-  const convert_btn = document.querySelector('#convert');
-  const reset_btn = document.querySelector('#reset')
-
-  const graph_div = document.querySelector('.graph-div');
-  const show_graph_btn = document.querySelector('#show-graph');
-  const graph_cancel_btn = document.querySelector('#graph-cancel');
-
-  let graph_exist = false;
-
-  function convert_num(num){
-    if(convert_btn.textContent === 'To Fraction'){
-        let obj = math.fraction(num);
-        let n = obj.n;
-        let d = obj.d;
-      console.log('its  fraction')
-        if(d != 1){ 
-            if(num.toString().match('\-')) return `-${n}/${d}`
-            return `${n}/${d}`
-        }
-
-    }else if(convert_btn.textContent === 'To Decimal'){
-      if(num.toString().match('\.')){
-            console.log('its a decimal')
-            return Math.round(num * 100) / 100;
-        }
+  const shape_methods = Shape_methods();
+  
+  function set_nodes_value(values){
+    const node_values = Array.from(document.querySelectorAll('.value'));
+    for(let i = 0; i < node_values.length; i++){
+      node_values[i].textContent = values[i];
     }
-    return num
   }
 
-  
+  function set_output_nodes(titles){
+    output_div.innerHTML = '';
+    let nodes = '<p id="legend">Parts:</p>';
+
+    for(let i = 0; i < titles.length; i++){
+      nodes += `
+            <div class="parts">
+                <p class="title">${titles[i]}:</p>
+                <p class="value">undefined</p>
+            </div>
+      `;
+    }
+
+    output_div.innerHTML = nodes;
+  }
+
+  function validate(bool){
+    if(bool){
+      equation_input.style.border = '3px solid green';
+      show_graph_btn.disabled = false;
+      return;
+    }else if(equation_input.value.length === 0){
+      equation_input.style.border = '2px solid var(--dark-bg)';
+    }else{
+      equation_input.style.border = '3px solid red';
+    }
+    show_graph_btn.disabled = true;
+  }
+
+
   function check_shape(shape){
     let equation = equation_input.value;
 
@@ -86,24 +95,6 @@ const Shape_part = function(){
     }
   }
 
-  function set_nodes_value(values){
-    const node_values = Array.from(document.querySelectorAll('.value'));
-    for(let i = 0; i < node_values.length; i++){
-      node_values[i].textContent = values[i];
-    }
-  }
-
-  function validate(bool){
-    if(bool){
-      equation_input.style.border = '3px solid green';
-    }else if(equation_input.value.length === 0){
-      equation_input.style.border = '2px solid var(--dark-bg)';
-    }else{
-      equation_input.style.border = '3px solid red';
-    }
-  }
-  
-
   function parabola(equation){
     set_output_nodes(['Directions', 'Focal Length(p)', 'Vertex', 'Focus', 'Directrix', 'Axis of Symmetry', 'Length of Latus Rectum', 'Endpoints of Latus Rectum']);
     const Parabola_c = new Parabola(equation);
@@ -118,32 +109,84 @@ const Shape_part = function(){
 
 
   function circle(equation){
-    set_output_nodes(['Center', 'Diameter', 'Radius', 'Area', 'Circumference']);
-    console.log('circle');
+    set_output_nodes(['Center', 'Radius', 'Diameter', 'Area', 'Circumference']);
+    const Circle_c = new Circle(equation);
+    const is_valid = Circle_c.validate();
+
+    validate(is_valid);
+    if(is_valid){
+      Circle_c.assign_values();
+      set_nodes_value(Circle_c.get_parts_value());
+    }
   }
 
 
-  function ellipse(equation){}
+  function ellipse(equation){
+    set_output_nodes(['Major Axis', 'Minor Axis', 'c', 'Center', 'Foci', 'Major Vertices', 'Minor Vertices', 'Length of Major Axis', 'Length of Minor Axis']);
+    const Ellipse_c = new Ellipse(equation);
+    const is_valid = Ellipse_c.validate();
+
+    validate(is_valid);
+    if(is_valid){
+      Ellipse_c.assign_values();
+      set_nodes_value(Ellipse_c.get_parts_value());
+    }
+  }
 
 
   function hyperbola(equation){}
 
 
-  function set_output_nodes(titles){
-    output_div.innerHTML = '';
-    let nodes = '<p id="legend">Parts:</p>';
-
-    for(let i = 0; i < titles.length; i++){
-      nodes += `
-            <div class="parts">
-                <p class="title">${titles[i]}:</p>
-                <p class="value">undefined</p>
-            </div>
-      `;
-    }
-
-    output_div.innerHTML = nodes;
+  function addEvent(){
+    shape_selection.addEventListener('change', () => {
+      check_shape(shape_selection.value);
+      shape_methods.clear();
+      validate();
+    });
+    equation_input.addEventListener('keyup', () => {
+      check_shape(shape_selection.value);
+      shape_methods.output_change_format(false);
+    });
   }
+  
+  return {
+    addEvent,
+    check_shape,
+
+  }
+};
+
+const Shape_methods = function (){
+  const equation_input = document.querySelector('#input-eq');
+  const show_graph_btn = document.querySelector('#show-graph');
+  const convert_btn = document.querySelector('#convert');
+  const reset_btn = document.querySelector('#reset')
+
+  const graph_div = document.querySelector('.graph-div');
+  const graph_cancel_btn = document.querySelector('#graph-cancel');
+
+  console.log(show_graph_btn)
+
+  let graph_exist = false;
+
+  function convert_num(num){
+    if(convert_btn.textContent === 'To Decimal'){
+        let obj = math.fraction(num);
+        let n = obj.n;
+        let d = obj.d;
+        if(d != 1){ 
+            if(num.toString().match('\-')) return `-${n}/${d}`
+            return `${n}/${d}`
+        }
+
+    }else if(convert_btn.textContent === 'To Fraction'){
+      if(num.toString().match(/[\.\/]/)){
+            return Math.round(eval(num) * 100) / 100;
+        }
+    }
+    return num
+  }
+
 
   function show_graph(){
     if(!graph_exist){
@@ -152,7 +195,7 @@ const Shape_part = function(){
         graph_exist = true;
     }
 
-    calculator.setExpression({ id: 'graph1', latex: equation_input.value});
+    calculator.setExpression({ id: 'graph1', latex: equation_input.value.replace(/²/g, '^2')});
     graph_div.style.transform = "translate(-50%, -50%)";
   }
 
@@ -161,43 +204,48 @@ const Shape_part = function(){
       graph_div.style.transform = "translate(-50%, -400%)";
   }
 
+
   function clear(){
     const node_values = Array.from(document.querySelectorAll('.value'));
     equation_input.value = '';
     node_values.map(l => l.textContent = "undefined");
-    show_graph_btn.disabled = true;
     show_graph_btn.style.cursor = "pointer";
   }
 
-  function output_change_format(e){
+
+  function output_change_format(change = false){
     const node_values = Array.from(document.querySelectorAll('.value'));
 
-    if(e.target.textContent === 'To Decimal'){
-        e.target.textContent = 'To Fraction'   
-    }else{
-        e.target.textContent = 'To Decimal'
+    if(change){
+      if(convert_btn.textContent === 'To Decimal'){
+          convert_btn.textContent = 'To Fraction'   
+      }else{
+          convert_btn.textContent = 'To Decimal'
+      }
     }
-  }
 
+    node_values.forEach(node => {
+      let value = node.textContent;
+      if(value.match(/[\.\/]\d+/)){
+        let values = value.match(/\-?\d+[\.\/]\d+/g);
+        values.forEach(val => {
+          node.textContent = node.textContent.replace(val, convert_num(val));
+        });
+      }
+    })
+  }
 
   function addEvent(){
-    show_graph_btn.addEventListener('click', show_graph);
     graph_cancel_btn.addEventListener('click', hide_graph);
     reset_btn.addEventListener('click', clear);
-    convert_btn.addEventListener('click', output_change_format.bind(event));
-    shape_options.map(option => option.addEventListener('click', (event) => {
-      equation_input.value = '';
-      check_shape(event.target.textContent);
-    }));
-    equation_input.addEventListener('keyup', () => {
-      check_shape(shape_selection.value);
-    });
+    convert_btn.addEventListener('click', output_change_format.bind(event, true));
+    show_graph_btn.addEventListener('click', show_graph);
   }
-  
+
   return {
+    clear,
     addEvent,
-    check_shape,
-    clear
+    output_change_format,
   }
 };
 
@@ -206,13 +254,18 @@ const Shape_part = function(){
   const shape_selection = document.querySelector('#shape-selection');
   const main = Main();
   const shape_part = Shape_part();
+  const shape_methods = Shape_methods();
 
   window.addEventListener('load', () => {
     main.check_window_size();
     main.addEvent();
     shape_part.addEvent();
-    shape_part.check_shape(shape_selection.value);
+    shape_methods.addEvent();
+    shape_methods.output_change_format(change=false);
+    shape_methods.clear();
   });
+
+  shape_selection.addEventListener('change', shape_part.check_shape(shape_selection.value));
 })();
 
 

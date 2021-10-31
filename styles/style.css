@@ -1,8 +1,8 @@
 
 main{
-    height:80vh;
+    height:100vh;
     padding:0 1em;
-    background: linear-gradient(0deg, rgba(243, 243, 243, 0.747), rgba(248, 248, 248, 0.699)) ,url('../assets/home_bg.jpg') no-repeat left;
+    background: linear-gradient(to right, rgb(202, 255, 255, 0.99), rgb(255, 255, 255, 0.6), rgb(202, 255, 255)) ,url('../assets/home_bg.jpg') no-repeat left;
     background-size: cover;
 
     display:flex;
@@ -12,6 +12,11 @@ main{
     gap:4em;
 }
 
+.container{
+    margin-bottom: 1em;
+    padding:1em;
+}
+
 
 h1{
     font-weight: 1400;
@@ -19,7 +24,7 @@ h1{
 }
 
 h2{
-    font-size:1.5rem;
+    font-size:2.1rem;
 }
 
 h1, #desc{
@@ -32,10 +37,8 @@ h1, #desc{
 
 
 .types-container h2, .calc h2{
-    padding:0.5em;
     text-align:left;
-    background-color:var(--dark-bg);
-    color: var(--light-font);
+    color: var(--dark-font);
 }
 
 .types{

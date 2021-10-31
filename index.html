@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta user-scalable="yes">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,400&family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.1/math.js" integrity="sha512-AfRcJIj922x/jSJpQLnry0DYIBg6EGCtwk/MiQ6QvDlzb7kNFxH8EdqXLkaXXY3YHQS9FrSb8H7LzuLn0CZQ1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -27,12 +28,12 @@
         </a>
     </header>
 
-    <main>
-        <h1>Conic Sections - Solver</h1>
-        <p id="desc">Hello!, Welcome to my website. It is a friendly website which can help you to find or solve a parts of certain shape in Conic Sections.</p>
+    <main class="container">
+        <h1>Conic Sections - <span class="highlight">Solver</span></h1>
+        <p id="desc">Hello!, Welcome to my website. It is a friendly website which can help you to <span class="highlight">find or solve</span> a parts of certain shape in <span class="highlight">Conic Sections</span>.</p>
     </main>
 
-    <div class="calc">
+    <div class="calc container">
         <h2>Calculate:</h2>
         <div class="choose-type-div">
             <label for="shapes">Choose Shapes: </label>
@@ -48,7 +49,7 @@
             <div class="button-div">
                 <button id="reset">Reset</button>
                 <button id="show-graph">Show Graph</button>
-                <button id="convert">To Decimal</button>
+                <button id="convert">To Fraction</button>
             </div>
         </div>
         <div class="output-div">
@@ -93,7 +94,7 @@
         <button id='graph-cancel'>Cancel</button>
     </div>
 
-    <div class="types-container">
+    <div class="types-container container">
         <h2 id="learn">Learn:</h2>
         <div class="types">
             <div class="circle shape" onclick="location.href = 'pages\\learn-page.html#circle'">
@@ -129,7 +130,9 @@
         </ul>
     </footer>
 
+    <script src="./scripts/circle.js"></script>
     <script src="./scripts/parabola.js"></script>
+    <script src="./scripts/ellipses.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
 </html>
