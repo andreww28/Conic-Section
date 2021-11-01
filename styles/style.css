@@ -2,7 +2,7 @@
 main{
     height:100vh;
     padding:0 1em;
-    background: linear-gradient(to right, rgb(202, 255, 255, 0.99), rgb(255, 255, 255, 0.6), rgb(202, 255, 255)) ,url('../assets/home_bg.jpg') no-repeat left;
+    background: linear-gradient(to right, rgb(154, 253, 253), rgb(225, 249, 255, 0.6), rgb(202, 255, 255)) ,url('../assets/home_bg.jpg') no-repeat left;
     background-size: cover;
 
     display:flex;
@@ -38,7 +38,7 @@ h1, #desc{
 
 .types-container h2, .calc h2{
     text-align:left;
-    color: var(--dark-font);
+    color: #1daeb9;
 }
 
 .types{
@@ -114,7 +114,7 @@ h1, #desc{
 }
 
 #input-eq:hover, #input-eq:focus-within{
-    box-shadow: 1px 3px 5px rgb(104, 98, 98);
+    box-shadow: 1px 3px 5px rgb(220, 223, 224);
     transform: translateY(-0.3em);
     transition: 0.3s all ease;
 }
@@ -138,7 +138,7 @@ button{
 }
 
 button:hover{
-    background-color:rgb(53, 53, 53);
+    background-color:#15c0c0f6;;
 }
 
 #convert{
@@ -161,6 +161,7 @@ button:hover{
     font-size:1.4rem;
     margin-bottom: 0.2em;
     font-weight: bold;
+    color: #1daeb9;
 }
 
 .parts{
@@ -190,7 +191,7 @@ button:hover{
     left:50%;
     transition: ease 0.5s;
     transform:translate(-50%, -400%);
-    background-color:rgb(46, 46, 46);
+    background-color:var(--dark-bg);
 }
 
 #graph-cancel{
@@ -212,6 +213,13 @@ button:hover{
     height:400px;
 }
 
+@media (min-width: 412px){
+    #calculator{
+        width:365px;
+        height:500px;
+    }
+}
+
 
 @media (min-width:800px){
     h1{
@@ -228,6 +236,11 @@ button:hover{
 
     #convert{
         grid-area: 1/2/2/3;
+    }
+
+    #calculator{
+        width:700px;
+        height:500px;
     }
 
     .output-div{

@@ -164,6 +164,7 @@ const Shape_methods = function (){
 
   const graph_div = document.querySelector('.graph-div');
   const graph_cancel_btn = document.querySelector('#graph-cancel');
+  const body = document.querySelector('.content');
 
   console.log(show_graph_btn)
 
@@ -197,11 +198,13 @@ const Shape_methods = function (){
 
     calculator.setExpression({ id: 'graph1', latex: equation_input.value.replace(/²/g, '^2')});
     graph_div.style.transform = "translate(-50%, -50%)";
+    body.style.filter = 'blur(5px)';
   }
 
 
   function hide_graph(){
       graph_div.style.transform = "translate(-50%, -400%)";
+      body.style.filter = 'blur(0px)';
   }
 
 
@@ -265,7 +268,7 @@ const Shape_methods = function (){
     shape_methods.clear();
   });
 
-  shape_selection.addEventListener('change', shape_part.check_shape(shape_selection.value));
+  shape_selection.addEventListener('change', () => shape_part.check_shape(shape_selection.value));
 })();
 
 

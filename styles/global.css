@@ -1,7 +1,7 @@
 :root{
-  --dark-bg : rgb(66, 156, 135);
+  --dark-bg : #15c0c0cc;
   --light-font : rgb(253, 253, 253);
-  --dark-font: rgb(67, 69, 71);
+  --dark-font: rgb(99, 99, 99);
 }
 
 *,*::before, *::after{
@@ -20,7 +20,7 @@ body{
     font-family: 'Roboto Slab', serif;
     font-size: 1.125rem;
     color: var(--dark-font);
-    background-image: linear-gradient(to right, rgb(202, 255, 255) , white, rgb(202, 255, 255));
+    background-image: linear-gradient(to right, rgb(154, 253, 253) , rgb(225, 249, 255), rgb(202, 255, 255));
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -30,7 +30,7 @@ button{
 }
 
 .highlight{
-  color:rgb(100, 163, 149);
+  color:#1daeb9;
   font-weight: 700;
 }
 
@@ -43,7 +43,7 @@ h1, h2, h4{
 
 
 header {
-    background-color: rgb(100, 163, 149);
+    background-color: #1daeb9;
     width:100%;
     height:3.5em;
     z-index: 2;
@@ -55,7 +55,7 @@ header {
   /* Hide the links inside the navigation menu (except for logo/home) */
   header #myLinks {
     flex-direction: column;
-    background-color:rgb(125, 202, 185);
+    background-color:#41c0c9;
     display: none;
   }
   
@@ -70,7 +70,8 @@ header {
   
   /* Style the hamburger menu */
   header a.icon {
-    background: rgb(100, 163, 149);
+    margin-top: 0.45em;
+    background: #1daeb9;
     display: block;
     position: absolute;
     right: 0;
@@ -79,13 +80,14 @@ header {
   
   /* Add a grey background color on mouse-over */
   header a:hover {
-    background-color: rgb(81, 160, 143);
-    color: rgb(184, 184, 184);
+    background-color: #029da8;
+    color: rgb(243, 243, 243);
   }
   
   /* Style the active link (or home/logo) */
   .active {
-    background-color:rgb(100, 163, 149);
+    margin-top:0.45em;
+    background-color:#1daeb9;
     color: var(--light-font);
   }
 
@@ -104,7 +106,7 @@ footer{
     margin-top:2em;
     padding:4em 1em;
     flex-direction:column;
-    background-color:rgb(100, 163, 149);
+    background-color:#1daeb9;
     color:var(--light-font);
 }
 
@@ -121,7 +123,7 @@ footer li {
 }
 
 footer li:hover{
-  color: rgb(128, 113, 102);
+  color: rgb(125, 225, 238);
 }
 
 
@@ -151,5 +153,10 @@ footer li:hover{
   }
 }
 
+@media (min-width: 800px){
+  .active {
+    margin-top:0;
+  }
+}
 
   
