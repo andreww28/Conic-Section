@@ -40,13 +40,13 @@
                 <label for="shapes">Choose Shapes: </label>
                 <select id="shape-selection">
                     <option value="parabola">Parabola</option>
-                    <option value="circle" selected>Circle</option>
+                    <option value="circle">Circle</option>
                     <option value="ellipse">Ellipse</option>
                     <option value="hyperbola">Hyperbola</option>
                 </select>
             </div>
             <div class="input-div">
-                <input type="text" id="input-eq" placeholder="Type/Paste Equation">
+                <input type="text" id="input-eq" placeholder="Type/Paste Standard Equation">
                 <div class="button-div">
                     <button id="reset">Reset</button>
                     <button id="show-graph">Show Graph</button>
@@ -120,7 +120,7 @@
         <div id="calculator"></div>
         <button id='graph-cancel'>Cancel</button>
     </div>
-    
+
     <footer>
         <h4>Let's Learn Together...</h4>
         <p>Contact me:</p>
@@ -132,9 +132,11 @@
         </ul>
     </footer>
 
+    <script src="./scripts/toStandard.js"></script>
     <script src="./scripts/circle.js"></script>
     <script src="./scripts/parabola.js"></script>
     <script src="./scripts/ellipses.js"></script>
+    <script src="./scripts/hyperbola.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
 </html>

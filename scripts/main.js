@@ -75,7 +75,6 @@ const Shape_part = function(){
 
   function check_shape(shape){
     let equation = equation_input.value;
-
     switch (shape.toLowerCase()){
       case 'circle':
         circle(equation);
@@ -134,7 +133,17 @@ const Shape_part = function(){
   }
 
 
-  function hyperbola(equation){}
+  function hyperbola(equation){
+    set_output_nodes(['Center', 'Conjugate Axis', 'Transverse Axis', 'Foci', 'Major Vertices', 'Minor Vertices', 'Eq of Asymptote']);
+    const Hyperbola_c = new Hyperbola(equation);
+    const is_valid = Hyperbola_c.validate();
+
+    validate(is_valid);
+    if(is_valid){
+      Hyperbola_c.assign_values();
+      set_nodes_value(Hyperbola_c.get_parts_value());
+    }
+  }
 
 
   function addEvent(){
